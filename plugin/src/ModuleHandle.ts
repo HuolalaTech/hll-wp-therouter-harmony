@@ -1,4 +1,4 @@
-import {HvigorNode} from '@ohos/hvigor';
+import { HvigorNode } from '@ohos/hvigor';
 import {
   OhosAppContext,
   OhosHapContext,
@@ -7,11 +7,11 @@ import {
   OhosPluginId,
   Target
 } from '@ohos/hvigor-ohos-plugin';
-import {ModuleBuildProfile} from '@ohos/hvigor-ohos-plugin/src/options/build/module-build-profile';
-import {PluginConfig, PluginConfigParam} from './PluginConfig';
-import {ParseAnnotationPlugin} from './ParseAnnotationPlugin';
-import {Logger} from './common/Logger';
-import {RouterInfo} from './common/AnalyzerResultLike';
+import { ModuleBuildProfile } from '@ohos/hvigor-ohos-plugin/src/options/build/module-build-profile';
+import { PluginConfig, PluginConfigParam } from './PluginConfig';
+import { ParseAnnotationPlugin } from './ParseAnnotationPlugin';
+import { Logger } from './common/Logger';
+import { RouterInfo } from './common/AnalyzerResultLike';
 import PluginConstant from './constants/PluginConstant';
 import TaskConstants from './constants/TaskConstants';
 import TheRouterFileUtil from './utils/FileUtil';
@@ -73,7 +73,8 @@ export class ModuleHandle {
 
   private generateObfuscationFileTask(buildProfileOpt: ModuleBuildProfile.ModuleBuildOpt) {
     if (!this.isEnableObfuscation(buildProfileOpt)) {
-      Logger.info('This compilation does not turn on code obfuscation, skip ' + PluginConstant.OBFUSCATION_FILE_NAME + ' file generation');
+      Logger.info('This compilation does not turn on code obfuscation, skip ' + PluginConstant.OBFUSCATION_FILE_NAME +
+        ' file generation');
       return;
     }
     let obfuscationFilePath = TheRouterFileUtil.pathResolve(this.config.modulePath,
@@ -95,12 +96,14 @@ export class ModuleHandle {
     let buildOption = buildProfileOpt.buildOptionSet?.find((item) => {
       return item.name == currentBuildMode;
     });
-    if (!buildOption) return false;
+    if (!buildOption) {
+      return false;
+    }
     let ruleOptions = this.ensureNestedObject(buildOption, ['arkOptions', 'obfuscation', 'ruleOptions']);
     if (this.config.autoObfuscation && ruleOptions.enable) {
       let files = this.ensureNestedObject(buildOption, ['arkOptions', 'obfuscation', 'ruleOptions', 'files']);
       let obfuscationFilePath = PluginConstant.CURRENT_DELIMITER +
-        PluginConstant.OBFUSCATION_FILE_NAME;
+      PluginConstant.OBFUSCATION_FILE_NAME;
       if (typeof files === 'string') {
         ruleOptions.files = [files, obfuscationFilePath];
       } else if (Array.isArray(files)) {
@@ -111,7 +114,7 @@ export class ModuleHandle {
       if (this.moduleContext.getModuleType() === PluginConstant.HAR_MODULE_NAME) {
         let consumerFiles = this.ensureNestedObject(buildOption, ['arkOptions', 'obfuscation', 'consumerFiles']);
         let consumerRulesPath = PluginConstant.CURRENT_DELIMITER +
-          PluginConstant.CONSUMER_FILE_NAME;
+        PluginConstant.CONSUMER_FILE_NAME;
         if (typeof consumerFiles === 'string') {
           this.ensureNestedObject(buildOption, ['arkOptions', 'obfuscation']).consumerFiles =
             [consumerFiles, consumerRulesPath];
@@ -139,7 +142,9 @@ export class ModuleHandle {
   }
 
   private writeHspModuleName() {
-    if (!this.node.getAllPluginIds().includes(OhosPluginId.OHOS_HAP_PLUGIN)) return;
+    if (!this.node.getAllPluginIds().includes(OhosPluginId.OHOS_HAP_PLUGIN)) {
+      return;
+    }
     let rawFilePath = this.config.getRawFilePath();
     let rawFileRouterMap = JSON.parse(TheRouterFileUtil.readFileSync(rawFilePath).toString());
     rawFileRouterMap.hspModuleNames = [...new Set(PluginStore.getInstance().hspModuleNames)];
@@ -174,8 +179,12 @@ export class ModuleHandle {
       let routerMapFilePath = this.config.getModuleRouterMapFilePath(routerMapFileName);
       let routerMapObj = TheRouterFileUtil.readJson5(routerMapFilePath);
       if (routerMapFileName !== PluginConstant.ROUTER_MAP_KEY) {
-        this.parseAnnotationPlugin.routerMap.unshift(
-          ...((routerMapObj as any)[PluginConstant.ROUTER_MAP_KEY] as Array<RouterInfo>));
+        try {
+          this.parseAnnotationPlugin.routerMap.unshift(
+            ...((routerMapObj as any)[PluginConstant.ROUTER_MAP_KEY] as Array<RouterInfo>));
+        } catch (error) {
+          Logger.warn(`parse error routeMap from ${routerMapFilePath}`);
+        }
       }
     }
     this.parseAnnotationPlugin.generateRouterMap();
