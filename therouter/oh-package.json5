@@ -4,6 +4,19 @@
   "description": "A framework for assisting in the renovation of Harmony componentization",
   "main": "Index.ets",
   "author": "ZhangTao",
+  "keywords": [
+    "huolala",
+    "therouter",
+    "harmony",
+    "router",
+    "navigation",
+    "navigate"
+  ],
+  "homepage": "https://therouter.cn",
+  "repository": "https://github.com/HuolalaTech/hll-wp-therouter-harmony",
+  "bugs": {
+    "url": "https://github.com/HuolalaTech/hll-wp-therouter-harmony/issues"
+  },
   "license": "Apache-2.0",
   "dependencies": {
     "libtherouter.so": "file:./src/main/cpp/types/libtherouter"
