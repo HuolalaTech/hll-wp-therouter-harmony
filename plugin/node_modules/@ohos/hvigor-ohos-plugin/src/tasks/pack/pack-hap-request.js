@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.sendPackRequest=void 0;const websocket_js_1=require("../java-daemon/websocket.js");async function sendPackRequest(e,s){const t={type:websocket_js_1.MessageType.PACK_APP,data:JSON.stringify(s)};return(0,websocket_js_1.sendSocketRequest)(t,e)}exports.sendPackRequest=sendPackRequest;
