@@ -57,6 +57,22 @@ export class TheRouter {
   }
 
   /**
+   * 判断 url 是否为 TheRouter 的 Action
+   * Path 会被记录到路由表内，Action不会被记录，Action更像是一个消息事件，参考Android的广播
+   */
+  static isRouterAction(path: string): boolean {
+    return RouterInject.getInstance().isRouterAction(path)
+  }
+
+  /**
+   * 判断 url 是否为 TheRouter 的路由 Path
+   * Path 会被记录到路由表内，Action不会被记录，Action更像是一个消息事件，参考Android的广播
+   */
+  static isRouterPath(path: string): boolean {
+    return RouterInject.getInstance().matchRouteMap(path) != null
+  }
+
+  /**
    * 获取指定UI栈的参数，缺省时返回当前栈
    * @param stackId
    * @returns

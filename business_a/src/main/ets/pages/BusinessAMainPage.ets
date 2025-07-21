@@ -5,10 +5,6 @@ import { BaseConstant } from 'base';
 @Route({ path: BaseConstant.PAGE_A2 })
 @Component
 export struct BusinessAMainPage {
-  aboutToAppear(): void {
-    TheRouter.inject(this)
-  }
-
   build() {
     Column() {
       Text('A').margin({ top: 50 })
@@ -38,6 +34,15 @@ export struct BusinessAMainPage {
    * 如果自定义 onBackPress()，必须调用 TheRouter.inject(this)
    */
   onBackPress(): boolean | void {
-    console.log("onBackPress", "business_a")
+    console.log("onBackPress business_aMainPage")
+  }
+
+  aboutToAppear(): void {
+    TheRouter.inject(this)
+    console.log("aboutToAppear business_aMainPage")
+  }
+
+  aboutToDisappear(): void {
+    console.log("aboutToDisappear business_aMainPage")
   }
 }

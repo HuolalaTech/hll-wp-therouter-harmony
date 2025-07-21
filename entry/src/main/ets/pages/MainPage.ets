@@ -11,12 +11,16 @@ export struct MainPage {
   @State text1: string = "拦截器"
   @State text2: string = "单例ServiceProvider"
   @State text3: string = "默认（非单例）ServiceProvider"
+  @State contentText: string = ""
 
   build() {
     Column() {
-      Button("跳到模块A(HSP)")
+      Text(this.contentText)
         .height(40)
         .margin({ bottom: 10, top: 40 })
+      Button("跳到模块A(HSP)")
+        .height(40)
+        .margin({ bottom: 10 })
         .onClick(() => {
           TheRouter.build(BaseConstant.PAGE_A1).navigation();
         })
@@ -84,5 +88,14 @@ export struct MainPage {
     }
     .height('100%')
     .width('100%')
+  }
+
+  aboutToAppear(): void {
+    TheRouter.inject(this)
+    console.log("aboutToAppear entry MainPage")
+  }
+
+  aboutToDisappear(): void {
+    console.log("aboutToDisappear entry MainPage")
   }
 }

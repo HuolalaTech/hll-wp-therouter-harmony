@@ -102,6 +102,11 @@ export class RouterInject {
     return routeItem?.buildFunction === 'DynamicPageBuilder'
   }
 
+  public isRouterAction(path: string): boolean {
+    let actionData = this.actionMap.get(path);
+    return actionData != null
+  }
+
   public getBuilderByPath(path: string): WrappedBuilder<ESObject> | undefined {
     let routeItem = this.routerMap.get(path);
     if (routeItem && routeItem.ohmurl && routeItem.buildFunction) {
