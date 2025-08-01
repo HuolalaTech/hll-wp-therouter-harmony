@@ -1,6 +1,6 @@
 {
   "name": "@therouter/library",
-  "version": "1.0.1-rc2",
+  "version": "1.0.1",
   "description": "A framework for assisting in the renovation of Harmony componentization",
   "main": "Index.ets",
   "author": "ZhangTao",
