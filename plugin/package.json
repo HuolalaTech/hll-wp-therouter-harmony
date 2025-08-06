@@ -1,6 +1,6 @@
 {
   "name": "@therouter/plugin",
-  "version": "1.0.1-rc1",
+  "version": "1.0.1",
   "main": "dist/Index.js",
   "scripts": {
     "test:unit": "cross-env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' TEST_ENV='unit' mocha",

@@ -1,0 +1,1 @@
+"use strict";var LaunchTypeEnum;Object.defineProperty(exports,"__esModule",{value:!0}),exports.LaunchTypeEnum=void 0,function(e){e.MULTITON="multiton",e.SINGLETON="singleton",e.SPECIFIED="specified",e.STANDARD="standard"}(LaunchTypeEnum=exports.LaunchTypeEnum||(exports.LaunchTypeEnum={}));
