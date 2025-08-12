@@ -17,4 +17,5 @@ export class DynamicRouteMapDemo {
     "    }" +
     "  ]\n" +
     "}"
+  public static TEST_DEEP_PATH = 'https://kymjs.com/TEST_DEEP_PATH';
 }

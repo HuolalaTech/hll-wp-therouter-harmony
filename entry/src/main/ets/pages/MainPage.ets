@@ -2,6 +2,7 @@ import { Route, TheRouter } from '@therouter/library';
 import { IService } from '../service/CustomService';
 import { BaseConstant } from 'base';
 import { InterceptDemo } from './InterceptDemo';
+import { DynamicRouteMapDemo } from './dynamic/DynamicRouteMapDemo';
 
 
 @Route({ path: BaseConstant.MAIN_PAGE, description: 'Demo首页' })
@@ -41,6 +42,12 @@ export struct MainPage {
         .margin({ bottom: 10 })
         .onClick(() => {
           TheRouter.build(BaseConstant.LIST_PAGE1).withString("hello", "来自首页的参数").navigation();
+        })
+      Button("跳到当前模块的深层包名页面(HAP)")
+        .height(40)
+        .margin({ bottom: 10 })
+        .onClick(() => {
+          TheRouter.build(DynamicRouteMapDemo.TEST_DEEP_PATH).navigation();
         })
       Button("页面切换动画demo（华为推荐方案）")
         .height(40)
