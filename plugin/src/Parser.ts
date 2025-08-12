@@ -269,14 +269,17 @@ export class Parser {
         if (TheRouterFileUtil.exist(tempFilePath)) {
           filePath = tempFilePath;
         } else {
-          filePath = this.getOtherModuleVariableFilePath(importPath, variableName);
+          const otherModuleVariableFilePath = this.getOtherModuleVariableFilePath(importPath, variableName);
+          if (otherModuleVariableFilePath) {
+            filePath = otherModuleVariableFilePath;
+          }
         }
       }
     });
     return filePath;
   }
 
-  private getOtherModuleVariableFilePath(moduleName: string, variableName: string): string {
+  private getOtherModuleVariableFilePath(moduleName: string, variableName: string): string | undefined {
     let moduleFilePath = TheRouterFileUtil.pathResolve(this.config.modulePath,
       PluginConstant.OH_MODULE_PATH, moduleName, PluginConstant.DEFAULT_SCAN_DIR);
     if (!TheRouterFileUtil.exist(moduleFilePath)) {
@@ -295,6 +298,7 @@ export class Parser {
         return key;
       }
     }
-    throw new Error(`Unknown variable ${variableName} in ${moduleName}`);
+    // throw new Error(`Unknown variable ${variableName} in ${moduleName}`);
+    return undefined
   }
 }
