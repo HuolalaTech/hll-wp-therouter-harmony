@@ -30,9 +30,7 @@ export struct BusinessAMainPage {
     .width('100%')
   }
 
-  /**
-   * 如果自定义 onBackPress()，必须调用 TheRouter.inject(this)
-   */
+  ////////////////////////////////// 如果自定义生命周期方法，必须调用 TheRouter.inject(this) ////////////////////////////////
   onBackPress(): boolean | void {
     console.log("onBackPress business_aMainPage")
   }
@@ -40,6 +38,39 @@ export struct BusinessAMainPage {
   aboutToAppear(): void {
     TheRouter.inject(this)
     console.log("aboutToAppear business_aMainPage")
+  }
+
+  aboutToRecycle(): void {
+    console.log("aboutToRecycle business_aMainPage")
+  }
+
+  onWillApplyTheme(theme: Theme): void {
+    console.log("onWillApplyTheme business_aMainPage")
+  }
+
+  onPageShow(): void {
+    console.log("onPageShow business_aMainPage")
+  }
+
+  onPageHide(): void {
+    console.log("onPageHide business_aMainPage")
+  }
+
+  onFormRecycle(): string {
+    console.log("onFormRecycle business_aMainPage")
+    return ""
+  }
+
+  onFormRecover(statusData: string): void {
+    console.log("onFormRecover business_aMainPage")
+  }
+
+  onNewParam(param: ESObject): void {
+    console.log("onNewParam business_aMainPage")
+  }
+
+  onDidBuild(): void {
+    console.log("onDidBuild business_aMainPage")
   }
 
   aboutToDisappear(): void {
