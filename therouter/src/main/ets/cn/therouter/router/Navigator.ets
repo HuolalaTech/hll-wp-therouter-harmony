@@ -291,7 +291,7 @@ export class Navigator {
     // 找到 `?` 之后的部分（Query）
     const queryIndex = url.indexOf("?");
     if (queryIndex !== -1) {
-      encodedQuery = url.substring(queryIndex); // 包含 `?`
+      encodedQuery = url.substring(queryIndex+1); // 不包含 `?`
     }
 
     this.parserString(encodedFragment); // 对应 Kotlin 的 uri.encodedFragment

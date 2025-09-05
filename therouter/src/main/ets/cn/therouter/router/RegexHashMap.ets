@@ -11,7 +11,7 @@ export class RegexHashMap extends Map<string, RouteItem> {
 
     for (const regexStr of this.keys()) {
       try {
-        const regex = new RegExp(regexStr);
+        const regex = new RegExp(`^${regexStr}&`);
         if (regex.test(key)) {
           return this.get(regexStr);
         }
