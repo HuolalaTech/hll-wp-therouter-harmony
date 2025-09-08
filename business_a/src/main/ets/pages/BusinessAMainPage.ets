@@ -33,6 +33,10 @@ export struct BusinessAMainPage {
   ////////////////////////////////// 如果自定义生命周期方法，必须调用 TheRouter.inject(this) ////////////////////////////////
   onBackPress(): boolean | void {
     console.log("onBackPress business_aMainPage")
+    TheRouter.build().withString("hello", "向上个页面传参数").pop()
+    // 因为上面调用了 pop()，这里不需要重复调用，所以 return true。
+    // 实际业务中，上面的 pop() 也可以是点击某个按钮以后执行。
+    return true;
   }
 
   aboutToAppear(): void {

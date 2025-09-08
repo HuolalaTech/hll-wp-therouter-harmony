@@ -69,7 +69,13 @@ export class TheRouterStack extends NavPathStack {
         name: routeItem.path!,
         param: routeItem.param,
         onPop: (info: PopInfo) => {
-          onResult?.(routeItem, info);
+          try {
+            onResult?.(routeItem, info);
+          } catch (e) {
+            if (TheRouter.isDebug) {
+              throw new Error(`onResult() error：${e}`);
+            }
+          }
         }
       };
       const options: NavigationOptions = {

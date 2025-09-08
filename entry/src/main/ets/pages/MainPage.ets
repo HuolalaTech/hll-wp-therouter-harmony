@@ -23,7 +23,12 @@ export struct MainPage {
         .height(40)
         .margin({ bottom: 10 })
         .onClick(() => {
-          TheRouter.build(BaseConstant.PAGE_A1).navigation();
+          TheRouter.build(BaseConstant.PAGE_A1).navigation({
+            onResult: (routeItem, popInfo) => {
+              let param: Map<string, object> = popInfo.result["param"]
+              console.log("获取到上个页面返回的数据：" + param["hello"])
+            }
+          });
         })
       Button("跳到模块B(HSP)")
         .height(40)
