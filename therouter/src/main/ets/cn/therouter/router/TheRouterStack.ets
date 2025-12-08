@@ -4,6 +4,7 @@ import { RouteItem } from './RouteItem';
 import { KEY_ANIM, toLaunchMode } from './Navigator';
 import { TheRouter } from '../TheRouter';
 import { IAnimator } from './ui/IAnimator';
+import { TemplateService } from './ui/TemplateSevice';
 
 /**
  * 当前页面的Stack，框架外部一般不需要关心
@@ -47,6 +48,8 @@ export class TheRouterStack extends NavPathStack {
 
   registerPage(obj: ESObject) {
     this.pageStack.set(this.currentPageId, obj);
+    TemplateService.disposableMap.get(this.stackId + this.currentPageId)?.();
+    TemplateService.disposableMap.delete(this.stackId + this.currentPageId);
   }
 
   getPage(pageId: string): ESObject {

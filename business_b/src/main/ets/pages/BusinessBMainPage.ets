@@ -23,4 +23,63 @@ export struct BusinessBMainPage {
     .height('100%')
     .width('100%')
   }
+
+  aboutToAppear(): void {
+    // 所有生命周期方法，均依赖 inject() 的执行
+    TheRouter.inject(this)
+    console.log("aboutToAppear business_b MainPage")
+  }
+
+  aboutToDisappear(): void {
+    console.log("aboutToDisappear business_b MainPage")
+  }
+
+  /**
+   * onAppear 的执行时机比较特殊，是在 inject() 调用的时候执行的
+   */
+  onAppear(event: () => void): CommonAttribute {
+    console.log("onAppear business_b BusinessBMainPage")
+    return this
+  }
+
+  onDisAppear(event: () => void): CommonAttribute {
+    console.log("onDisAppear business_b BusinessBMainPage")
+    return this
+  }
+
+  onShown() {
+    console.log("onShown business_b BusinessBMainPage")
+  }
+
+  onPageShow(): void {
+    console.log("onPageShow business_b BusinessBMainPage")
+  }
+
+  onPageHide(): void {
+    console.log("onPageHide business_b BusinessBMainPage")
+  }
+
+  onHidden() {
+    console.log("onHidden business_b BusinessBMainPage")
+  }
+
+  onWillAppear() {
+    console.log("onWillAppear business_b BusinessBMainPage")
+  }
+
+  onWillDisappear() {
+    console.log("onWillDisappear business_b BusinessBMainPage")
+  }
+
+  onWillShow() {
+    console.log("onWillShow business_b BusinessBMainPage")
+  }
+
+  onWillHide() {
+    console.log("onWillHide business_b BusinessBMainPage")
+  }
+
+  onBackPress(): boolean | void {
+    console.log("onBackPress business_b BusinessBMainPage")
+  }
 }
