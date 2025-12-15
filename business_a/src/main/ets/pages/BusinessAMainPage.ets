@@ -1,16 +1,22 @@
-import { Route, TheRouter } from '@therouter/library';
+import { Autowired, Route, TheRouter } from '@therouter/library';
 import { BaseConstant } from 'base';
 
 @Route({ path: BaseConstant.PAGE_A1, params: ["hello", "路由表默认参数"] })
 @Route({ path: BaseConstant.PAGE_A2 })
 @Component
 export struct BusinessAMainPage {
+  @Autowired()
+  testNumber: number = 0
+
   build() {
     Column() {
       Text('A').margin({ top: 50 })
       // 因为在顶部注解中加了默认参数，通过 PAGE_A1 打开时，会自动向当前页传递参数 k:v = hello:world
       // 但如果外部也传入了hello的参数，则会覆盖路由上的默认参数
       Text(TheRouter.getCurrentParam()["hello"])
+        .id('List')
+        .margin({ top: 50 })
+      Text(this.findType(this.testNumber))
         .id('List')
         .margin({ top: 50 })
       Button("再次打开当前页")
@@ -28,6 +34,15 @@ export struct BusinessAMainPage {
     }
     .height('100%')
     .width('100%')
+  }
+
+  findType(type: number): string {
+    switch (type) {
+      case 123:
+        return "数字：123"
+      default:
+        return "字符串：123"
+    }
   }
 
   ////////////////////////////////// 如果自定义生命周期方法，必须调用 TheRouter.inject(this) ////////////////////////////////
