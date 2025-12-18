@@ -34,3 +34,11 @@ https://therouter.cn/docs/2022/09/06/01
 
 ## 1.0.3-rc2  
 * 修复已知问题，详情请见：[https://github.com/HuolalaTech/hll-wp-therouter-harmony/releases/tag/v1.0.3-rc2](https://github.com/HuolalaTech/hll-wp-therouter-harmony/releases/tag/v1.0.3-rc2)  
+
+
+## 1.0.3-rc3  
+* 修复已知问题，详情请见：[https://github.com/HuolalaTech/hll-wp-therouter-harmony/releases/tag/v1.0.3-rc3](https://github.com/HuolalaTech/hll-wp-therouter-harmony/releases/tag/v1.0.3-rc3)  
+
+
+## 1.0.3-rc3  
+* 修复已知问题，详情请见：[https://github.com/HuolalaTech/hll-wp-therouter-harmony/releases/tag/v1.0.3-rc3](https://github.com/HuolalaTech/hll-wp-therouter-harmony/releases/tag/v1.0.3-rc3)  
