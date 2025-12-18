@@ -35,7 +35,8 @@ export const KEY_ANIM = "therouter_intent_animation"
 
 export class Navigator {
   private stackId?: string;
-  private readonly param: Map<string, Object | boolean | number> = new Map<string, Object | boolean | number>();
+  private readonly param: Map<string, Object | boolean | number | null | undefined> =
+    new Map<string, Object | boolean | number | null | undefined>();
   private launchMode?: LaunchMode;
   private animator?: boolean;
   private pathFixOriginalUrl: string;
@@ -170,12 +171,12 @@ export class Navigator {
   }
 
   public withBoolean(key?: string, value?: boolean): Navigator {
-    this.param.set(key || '', value || '');
+    this.param.set(key || '', value);
     return this;
   }
 
   public withNumber(key?: string, value?: number): Navigator {
-    this.param.set(key || '', value || '');
+    this.param.set(key || '', value);
     return this;
   }
 

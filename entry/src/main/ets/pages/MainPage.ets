@@ -23,7 +23,7 @@ export struct MainPage {
         .height(40)
         .margin({ bottom: 10 })
         .onClick(() => {
-          TheRouter.build(BaseConstant.PAGE_A1).withNumber("testNumber", 123).navigation({
+          TheRouter.build(BaseConstant.PAGE_A1).withNumber("testNumber", 0).navigation({
             onResult: (routeItem, popInfo) => {
               let param: Map<string, object> = popInfo.result["param"]
               console.log("获取到上个页面返回的数据：" + param["hello"])

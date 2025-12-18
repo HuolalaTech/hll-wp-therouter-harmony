@@ -39,9 +39,9 @@ export struct BusinessAMainPage {
   findType(type: number): string {
     switch (type) {
       case 123:
-        return "数字：123"
+        return "数字：" + type
       default:
-        return "字符串：123"
+        return "字符串：" + type
     }
   }
 
